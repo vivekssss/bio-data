@@ -48,13 +48,14 @@ export function Navbar() {
   }, [setLanguage]);
 
   function handleLanguageChange(code: string) {
-    setSelectedLangCode(code || "en");
-    setLanguage(code === "hi" ? "hi" : "en");
+    const targetCode = code || "en";
+    setSelectedLangCode(targetCode);
+    setLanguage(targetCode === "hi" ? "hi" : "en");
     if (
       typeof window !== "undefined" &&
-      (window as any).setGoogleTranslateLanguage
+      window.setGoogleTranslateLanguage
     ) {
-      (window as any).setGoogleTranslateLanguage(code || "en");
+      window.setGoogleTranslateLanguage(targetCode);
     }
   }
 

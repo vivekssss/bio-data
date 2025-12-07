@@ -2,10 +2,28 @@
 
 import { useEffect } from "react";
 
+interface GoogleTranslate {
+  translate?: {
+    TranslateElement: {
+      new (
+        options: {
+          pageLanguage: string;
+          includedLanguages?: string;
+          layout?: unknown;
+        },
+        elementId: string,
+      ): void;
+      InlineLayout: {
+        SIMPLE: unknown;
+      };
+    };
+  };
+}
+
 declare global {
   interface Window {
     googleTranslateElementInit?: () => void;
-    google?: any;
+    google?: GoogleTranslate;
     setGoogleTranslateLanguage?: (lang: string) => void;
   }
 }
