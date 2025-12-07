@@ -1,101 +1,146 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { Sparkles, ArrowRight, ShieldCheck, FileText, HeartHandshake } from "lucide-react";
+import { templates } from "@/data/templates";
+import { TemplateCard } from "@/components/TemplateCard";
+
+const featured = templates.slice(0, 6);
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="space-y-8 sm:space-y-10">
+      <section className="grid gap-6 md:grid-cols-[1.4fr,1fr] md:items-center">
+        <div className="space-y-5">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 22 }}
+            className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-[11px] font-medium text-emerald-200"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-emerald-300" />
+            25+ biodata templates · 100% free · made for youth
+          </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05, type: "spring", stiffness: 220, damping: 22 }}
+            className="text-balance text-2xl font-semibold tracking-tight text-slate-50 sm:text-4xl lg:text-5xl"
+          >
+            Free biodata templates for jobs, weddings and real life.
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, type: "spring", stiffness: 220, damping: 22 }}
+            className="text-balance text-sm text-slate-300 sm:text-base"
+          >
+            Stop paying for simple biodata PDFs. Copy ready-made formats for software,
+            engineering, teaching, wedding biodata and more – and customise in Word,
+            Google Docs or Canva.
+          </motion.p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.16, type: "spring", stiffness: 220, damping: 22 }}
+            className="flex flex-wrap items-center gap-3 pt-1"
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Link
+              href="/templates"
+              className="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-xs font-semibold text-emerald-950 shadow-lg shadow-emerald-500/40 transition hover:bg-emerald-400 hover:shadow-emerald-400/40 sm:text-sm"
+            >
+              Browse all templates
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+            <span className="text-[11px] text-slate-300 sm:text-xs">
+              No sign-up. Just copy the text and make it yours.
+            </span>
+          </motion.div>
+
+          <motion.dl
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.22, type: "spring", stiffness: 220, damping: 22 }}
+            className="grid gap-3 pt-2 text-[11px] text-slate-200 sm:grid-cols-3 sm:text-sm"
           >
-            Read our docs
-          </a>
+            <div className="flex items-start gap-2 rounded-lg border border-slate-700/70 bg-slate-900/70 p-2.5">
+              <ShieldCheck className="mt-0.5 h-4 w-4 text-emerald-400" />
+              <div>
+                <dt className="font-semibold">100% free forever</dt>
+                <dd className="text-[11px] text-slate-300 sm:text-xs">
+                  No paywalls, no watermarks – use in interviews, marriage proposals
+                  or college.
+                </dd>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 rounded-lg border border-slate-700/70 bg-slate-900/70 p-2.5">
+              <FileText className="mt-0.5 h-4 w-4 text-sky-400" />
+              <div>
+                <dt className="font-semibold">Templates for every field</dt>
+                <dd className="text-[11px] text-slate-300 sm:text-xs">
+                  IT, engineering, medical, teaching, govt, trades, wedding and more.
+                </dd>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 rounded-lg border border-slate-700/70 bg-slate-900/70 p-2.5">
+              <HeartHandshake className="mt-0.5 h-4 w-4 text-pink-400" />
+              <div>
+                <dt className="font-semibold">Made for youth</dt>
+                <dd className="text-[11px] text-slate-300 sm:text-xs">
+                  Clear, simple language that works for freshers and families.
+                </dd>
+              </div>
+            </div>
+          </motion.dl>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+
+        <motion.div
+          initial={{ opacity: 0, x: 40, scale: 0.96 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          transition={{ delay: 0.1, type: "spring", stiffness: 220, damping: 20 }}
+          className="relative"
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-emerald-500/15 via-sky-500/10 to-fuchsia-500/20 blur-3xl" />
+          <div className="relative grid max-h-[380px] gap-3 overflow-hidden rounded-3xl border border-slate-700/80 bg-slate-950/80 p-3 shadow-2xl shadow-black/60 sm:max-h-none sm:p-4">
+            <div className="flex items-center justify-between gap-2 border-b border-slate-800/80 pb-2">
+              <div>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-300">
+                  Quick preview
+                </p>
+                <p className="text-[10px] text-slate-400">
+                  A few examples from the 25+ templates
+                </p>
+              </div>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {featured.slice(0, 4).map((template, index) => (
+                <TemplateCard key={template.id} template={template} index={index} />
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <h2 className="text-sm font-semibold text-slate-100 sm:text-base">
+            Popular biodata formats
+          </h2>
+          <Link
+            href="/templates"
+            className="text-[11px] font-medium text-sky-300 hover:text-sky-200 sm:text-xs"
+          >
+            See all templates
+          </Link>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+          {featured.map((template, index) => (
+            <TemplateCard key={template.id} template={template} index={index} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
